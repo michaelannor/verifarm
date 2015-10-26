@@ -445,3 +445,35 @@ footer *{
 /*drop shadow for text on message tiles*/
 
 
+/*beginning of Dzobo's branch*/
+
+h7{
+    font-family: "Avenir", "Lato", Helvetica, Arial, sans-serif;
+    color: #929292;
+    font-weight: 100;
+}
+
+label{
+    font-size: 12px;
+    padding-left: 10px;
+    display:inline-block;
+
+}
+
+.sample-form{
+    margin-top: 10px;
+    background: white;
+    display: inline block;
+
+}
+
+ .col-md-6{
+    margin-top: 7px;
+}
+
+
+
+.slide-minus.creative-bg .ghost-btn{
+    color: white;
+     min-height: 500px;
+}
