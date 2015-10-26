@@ -319,6 +319,13 @@ footer *{
     margin-bottom: 5px;
 }
 
+.request-info p{
+    color: #595959;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 10px 0px;
+}
+
 .r-name{
     padding-top: 20px;
     padding-bottom: 7px;
@@ -361,6 +368,17 @@ footer *{
 
 .request-details{
     padding-top: 30px;
+    padding-bottom: 100px;
+}
+
+.request-details p{
+    font-size: 16px !important;
+    line-height: 17px !important;
+}
+
+.request-details .btn{
+   left: auto;
+    right: auto;
 }
 
 .tab-menu{
@@ -369,7 +387,7 @@ footer *{
     border-bottom-color: #C8C8D3;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .tab-menu p{
@@ -405,8 +423,21 @@ footer *{
     opacity: 1.0;
 }
 
+.detail-heading{
+    margin-bottom: 5px !important;
+    line-height: 16px !important;
+    height: auto;
+    color: #929292 !important;
+    font-size: 15px !important;
+}
 
+.map-img{
+    margin-bottom: 40px !important;
+}
 
+.fund-me{
+    margin-top: 30px;
+}
 
 
 
