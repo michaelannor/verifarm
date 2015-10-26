@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------ */
 /* ------------------------------------------------------------ */
-/* CUSTOM STYLES FOR KCF */
+/* CUSTOM STYLES FOR VERIFARM */
 /* ------------------------------------------------------------ */
 /* ------------------------------------------------------------ */
 
@@ -295,7 +295,7 @@ footer *{
 /*
 #####################################################
 -----------------------------------------------------
-            EVENTS STYLES
+            REQUEST DETAIL STYLES
 -----------------------------------------------------
 #####################################################
 */
@@ -441,6 +441,65 @@ footer *{
 
 
 
+/*
+#####################################################
+-----------------------------------------------------
+            INDEX DETAIL STYLES
+-----------------------------------------------------
+#####################################################
+*/
+
+.home-bg{
+	background-color: #EAECEE;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+.home-requests{
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 270px;
+    max-height: 400px;
+    position: inherit;
+}
+
+
+
+@media(min-width: 768px){
+    .home-requests{
+       min-height: 129px; 
+    }
+}
+
+@media(min-width: 650px){
+    .home-requests{
+       min-height: 161px; 
+    }
+}
+
+.underline{
+    border-bottom-color: #C8C8D3;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+
+.btn-wow{
+    text-align: center;
+    float: right;
+    padding: 5px 8px;
+    margin-top: 5px;
+}
+
+.btn-wow p{
+    color: white;
+    font-size: 12px;
+    font-weight: 100;
+}
 /*gray color for the hamburger menu when active*/
 /*drop shadow for text on message tiles*/
 
