@@ -13,11 +13,22 @@ class farmer extends adb{
         return $this->fetch();
 
     }
+
+    function get_single_farmer($ID){
+        $str_query="select * from farmer where Username = '$ID'";
+        if(!$this->query($str_query)){
+            return false;
+        }
+        return $this->fetch();
+
+    }
+
+
     /**
      * [[Description]]
      * @param [[Type]] $firstname [[Description]]
      * @param [[Type]] $lastname  [[Description]]
-     */
+     **/
     function add($Username, $LastName, $FirstName, $Location, $Telephone){
 
         // you need a code to add product here

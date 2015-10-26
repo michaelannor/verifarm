@@ -13,6 +13,17 @@ class request extends adb{
         return $this->fetch();
 
     }
+
+    function get_single_request($ID){
+        $str_query="select * from request where Farmer = '$ID'";
+        if(!$this->query($str_query)){
+            return false;
+        }
+        return $this->fetch();
+
+    }
+
+
     /**
      * [[Description]]
      * @param [[Type]] $firstname [[Description]]
