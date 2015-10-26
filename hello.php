@@ -194,7 +194,7 @@ switch($cmd)
                     echo '{"result":0,"message": "people not got."}';
                 }
                 break;
-                case 7:
+                case 6:
                 process();
                 break;
 
@@ -259,7 +259,7 @@ function process($LandSize, $Seeds){
   $yieldmass = $yieldaverage * $LandSize;
 
   $benchmark = $yieldmass/$Seeds;
-  $farmerbench = $$yieldmass/$seedaverage;
+  $farmerbench = $yieldmass/$seedaverage;
 
   $rating = (($farmerbench/$benchmark)*70);
 
