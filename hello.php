@@ -96,13 +96,13 @@ switch($cmd)
 
                     //return a JSON string to browser when request comes to get description
             //echo '{"result":1,"firstname":"' .$row['firstname'] . '","lastname":"' .$row['lastname'] . '"}';
-
-            if($obj->get_request()){
+            $row=$obj->get_request();
+            if($row){
 
 
 
                     //generate the JSON message to echo to the browser
-        $row=$obj->fetch();
+        // $row=$obj->fetch();
         echo '{"result":1,"people":[';	//start of json object
         while($row){
             echo json_encode($row);			//convert the result array to json object
@@ -122,8 +122,82 @@ switch($cmd)
                 echo '{"result":0,"message": "people not got."}';
             }
             break;
-        case 5:
-        checker();
+        case 5: //fetching from the db
+
+            include("farmer.php");
+            $obj=new farmer();
+
+
+           $ID=$_REQUEST['ID'];
+
+
+                    //return a JSON string to browser when request comes to get description
+            //echo '{"result":1,"firstname":"' .$row['firstname'] . '","lastname":"' .$row['lastname'] . '"}';
+            $row=$obj->get_single_farmer($ID);
+            if($row){
+
+
+
+                    //generate the JSON message to echo to the browser
+        // $row=$obj->fetch();
+        echo '{"result":1,"farmer":[';	//start of json object
+        while($row){
+            echo json_encode($row);			//convert the result array to json object
+            $row=$obj->fetch();
+            if($row){
+                echo ",";					//if there are more rows, add comma
+            }
+        }
+        echo "]}";							//end of json array and object
+
+
+
+    //            echo '{"result":1,"message": "deleted"}';
+            }
+
+            else{
+                echo '{"result":0,"message": "people not got."}';
+            }
+            break;
+
+          case 6: //fetching from the db
+                include("request.php");
+                $obj=new request();
+               $ID=$_REQUEST['ID'];
+
+
+                        //return a JSON string to browser when request comes to get description
+                //echo '{"result":1,"firstname":"' .$row['firstname'] . '","lastname":"' .$row['lastname'] . '"}';
+
+                if($obj->get_single_request($ID)){
+
+
+
+                        //generate the JSON message to echo to the browser
+            $row=$obj->fetch();
+            echo '{"result":1,"request":[';	//start of json object
+            while($row){
+                echo json_encode($row);			//convert the result array to json object
+                $row=$obj->fetch();
+                if($row){
+                    echo ",";					//if there are more rows, add comma
+                }
+            }
+            echo "]}";							//end of json array and object
+
+
+
+        //            echo '{"result":1,"message": "deleted"}';
+                }
+
+                else{
+                    echo '{"result":0,"message": "people not got."}';
+                }
+                break;
+                case 7:
+                process();
+                break;
+
     default:
 }
 
@@ -136,9 +210,11 @@ function process($LandSize, $Seeds){
 
   $jsonseed_arr = array();
   $jsonyield_arr = array();
+  $jsonarea_arr=array();
   $i = 0;
 	foreach ($records['dataset']['data'] as $br_data){ //loop through data
 		$jsonseed_arr[] = $br_data[1]; //pull seeds
+    $jsonarea_arr[] = $br_data[2]; //pull area
 		$jsonyield_arr[] = $br_data[3]; //pull yield
 
 
@@ -153,7 +229,7 @@ function process($LandSize, $Seeds){
     // echo $br_values;
     // echo "<br></br>";
     */
-    if (++$i == 7) break;
+    //if (++$i == 7) break;
 }
 // echo $br_labels;
 // echo "  ::  ";
@@ -162,17 +238,24 @@ function process($LandSize, $Seeds){
 
   $seedtotal = 0;
   $yieldtotal = 0;
+  $areatotal = 0;
  foreach ($jsonseed_arr as $item) {
   $seedtotal += $item;
 }
  foreach ($jsonyield_arr as $item) {
    $yieldtotal += $item;
  }
+ foreach ($jsonarea_arr as $item) {
+   $areatotal += $item;
+ }
   $seedaverage = $seedtotal/count($jsonseed_arr);
   $yieldaverage = $yieldtotal/count($jsonyield_arr);
-  // echo $seedaverage;
-  // echo " :: ";
-  // echo $yieldaverage;
+  $areaaverage = $areatotal/count($jsonarea_arr);
+  echo $seedaverage;
+  echo " :: ";
+  echo $yieldaverage;
+  echo " :: ";
+  echo $areaaverage;
   $yieldmass = $yieldaverage * $LandSize;
 
   $benchmark = $yieldmass/$Seeds;

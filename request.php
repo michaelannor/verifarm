@@ -6,7 +6,7 @@ class request extends adb{
     *a function to get a product identified by id
     */
     function get_request(){
-        $str_query="select * from request";
+        $str_query="select * from request, Farmer WHERE request.Farmer = Farmer.Username";
         if(!$this->query($str_query)){
             return false;
         }
