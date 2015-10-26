@@ -1,7 +1,7 @@
 <?php
 include("adb.php");
 
-class people extends adb{
+class farmer extends adb{
     /**
     *a function to get a product identified by id
     */
@@ -19,13 +19,17 @@ class people extends adb{
      * @param [[Type]] $lastname  [[Description]]
      */
     function add($Username, $LastName, $FirstName, $Location, $Telephone){
-		
+
         // you need a code to add product here
-        $str_query="insert into farmer set Username='$Username',LastName='$LastName',FirstName='$FirstName',Location='$Location',Telephone='$Telephone";
+        $str_query="insert into Farmer set Username='$Username',LastName='$LastName',FirstName='$FirstName',Location='$Location',Telephone='$Telephone'";
+
         return $this->query($str_query);
-		
+
     }
 
+    function setRating($Rating, $Farmer){
+      $str_query="update Farmer set Rating='$Rating' where Username='$Farmer'";
+    }
 
 
 
