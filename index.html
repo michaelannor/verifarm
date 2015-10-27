@@ -22,6 +22,8 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
   </head>
+  
+  
   <body>  	
   	<div class="container entire-nav">
         <nav class="navbar navbar-fixed-top" role="navigation">
@@ -48,118 +50,19 @@
 
   	<section class="slide-minus home-bg">
   		<div class="container">
-	  		<div class="row">
+	  		<div class="row" >
 	  		    <div class="col-md-8 col-md-offset-2">
 	  		        <h4>Showing All Loan Requests</h4>
-	  		        
-	  		        
-                    
 	  		    </div>
 	  		    
-	  		    
-	  		    <div class="col-md-8 col-md-offset-2 home-requests underline">
-	  		        <div class="col-md-6 col-sm-6 col-xs-12">
-	  		            <img src="images/farmer.jpg" alt="" class="farmer-img">
-	  		        
-	  		        
-                        <div class="requester">
-                            <p class="r-name">John Rocksalt</p>
-                            <p>@jrocksalt</p>
-                            <p>Berekuso, ER.</p>
-                        </div>
-                    </div>
-	  		    
-                    <div class="col-md-6 col-sm-6 col-xs-12 request-summary">
-                        <p>Farmer Rating: <span class="navbar-new">B+</span></p>
-                        <p>Requested Amount: $2000.00</p>
-                        <p class="estimate">Estimated Potential of Yield: $7000.00</p>
-                        <a href="#" class="btn-success btn btn-wow">
-                            <p>View Details</p>
-                        </a>
-                    </div>
-	  		    </div>
-	  		    
-	  		    <div class="clearfix"></div>
-	  		    
-	  		    <div class="col-md-8 col-md-offset-2 home-requests underline">
-	  		        <div class="col-md-6 col-sm-6 col-xs-12">
-	  		            <img src="images/farmer.jpg" alt="" class="farmer-img">
-	  		        
-	  		        
-                        <div class="requester">
-                            <p class="r-name">John Rocksalt</p>
-                            <p>@jrocksalt</p>
-                            <p>Berekuso, ER.</p>
-                        </div>
-                    </div>
-	  		    
-                    <div class="col-md-6 col-sm-6 col-xs-12 request-summary">
-                        <p>Farmer Rating: <span class="navbar-new">B+</span></p>
-                        <p>Requested Amount: $2000.00</p>
-                        <p class="estimate">Estimated Potential of Yield: $7000.00</p>
-                        <a href="#" class="btn-success btn btn-wow">
-                            <p>View Details</p>
-                        </a>
-                    </div>
-	  		    </div>
-	  		    
-	  		    <div class="clearfix"></div>
-	  		    
-	  		    <div class="col-md-8 col-md-offset-2 home-requests underline">
-	  		        <div class="col-md-6 col-sm-6 col-xs-12">
-	  		            <img src="images/farmer.jpg" alt="" class="farmer-img">
-	  		        
-	  		        
-                        <div class="requester">
-                            <p class="r-name">John Rocksalt</p>
-                            <p>@jrocksalt</p>
-                            <p>Berekuso, ER.</p>
-                        </div>
-                    </div>
-	  		    
-                    <div class="col-md-6 col-sm-6 col-xs-12 request-summary">
-                        <p>Farmer Rating: <span class="navbar-new">B+</span></p>
-                        <p>Requested Amount: $2000.00</p>
-                        <p class="estimate">Estimated Potential of Yield: $7000.00</p>
-                        <a href="#" class="btn-success btn btn-wow">
-                            <p>View Details</p>
-                        </a>
-                    </div>
-	  		    </div>
-	  		    
-	  		    <div class="clearfix"></div>
-	  		    
-	  		    <div class="col-md-8 col-md-offset-2 home-requests underline">
-	  		        <div class="col-md-6 col-sm-6 col-xs-12">
-	  		            <img src="images/farmer.jpg" alt="" class="farmer-img">
-	  		        
-	  		        
-                        <div class="requester">
-                            <p class="r-name">John Rocksalt</p>
-                            <p>@jrocksalt</p>
-                            <p>Berekuso, ER.</p>
-                        </div>
-                    </div>
-	  		    
-                    <div class="col-md-6 col-sm-6 col-xs-12 request-summary">
-                        <p>Farmer Rating: <span class="navbar-new">B+</span></p>
-                        <p>Requested Amount: $2000.00</p>
-                        <p class="estimate">Estimated Potential of Yield: $7000.00</p>
-                        <a href="#" class="btn-success btn btn-wow">
-                            <p>View Details</p>
-                        </a>
-                    </div>
-	  		    </div>
-	  		    
-	  		    <div class="clearfix"></div>
+	  		     <div id="request-holder">
+	  		         
+	  		     </div>
 	  		    
 	  		    
 	  		    
-	  		    
-	  		    
-	  		    
+	  		     </div>
 	  		</div>
-  		</div>
   	</section>
   	
   	
@@ -210,5 +113,49 @@
     <script src="js/flatui-radio.js"></script>
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
+    <script>
+        $(document).ready(displayRequests());
+        
+        function sendRequest(u){
+            var obj = $.ajax({url:u,async:false});
+            alert(u);
+            var result = $.parseJSON(obj.responseText);
+            alert("Entered/.rey");
+            return result;
+        } 
+        
+        function displayRequests(){
+            var strUrl = "hello.php?cmd=4";
+            var objResult = sendRequest(strUrl);
+            if(objResult.result == 0){
+            }
+            else{
+                alert("Entered/.");
+                for(var i =0; i< objResult.people.length; i++){
+                    var farmerName = objResult.people[i].FirstName + " " + objResult.people[i].FirstName;
+                    var requestCard = "";
+                    requestCard+= "<div class='col-md-8 col-md-offset-2 home-requests underline'>";
+                    requestCard+= "<div class='col-md-6 col-sm-6 col-xs-12'>";
+                    requestCard+= "<img src='images/farmer.jpg' alt='' class='farmer-img'>";
+                    requestCard+= "<div class='requester'>";
+                    requestCard+= "<p class='r-name' id='name'>" + farmerName + "</p>";
+                    requestCard+= " <p id='username'>@ "+ objResult.people[i].Farmer + "/p>";
+                    requestCard+= "<p id='location'>" + objResult.people[i].Location + "</p>";
+                    requestCard+= "</div></div>";
+                    requestCard+= "<div class='col-md-6 col-sm-6 col-xs-12 request-summary'>";
+                    requestCard+= "<p>Farmer Rating: <span class='navbar-new'>" +objResult.people[i].Rating + "</span></p>";
+                    requestCard+= "<p>Requested Amount: "+objResult.people[i].RequestedAmount+"</p>";
+                    requestCard+= "<p class='estimate'>Estimated Potential of Yield: "+objResult.people[i].ExpectedYield+"</p>";
+                    requestCard+= "<a href='#' class='btn-success btn btn-wow'>";
+                    requestCard+= "<p>View Details</p></a></div></div><div class='clearfix'></div>";
+                    
+                    $("#request-holder").html(requestCard);
+                }
+
+            }
+        }
+    </script>
+    <script>
+      </script>
   </body>
 </html>
