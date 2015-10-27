@@ -57,8 +57,8 @@
 	  		        
 	  		        
                         <div class="requester">
-                            <p class="r-name">John Rocksalt</p>
-                            <p>@jrocksalt</p>
+                            <p class="r-name">Nathan Nathan</p>
+                            <p>@amanquah</p>
                             <p>Berekuso, ER.</p>
                         </div>
                     </div>
@@ -66,8 +66,8 @@
 	  		    
                     <div class="col-md-6 col-sm-6 col-xs-12 request-summary">
                         <p>Farmer Rating: <span class="navbar-new">B+</span></p>
-                        <p>Requested Amount: $2000.00</p>
-                        <p class="estimate">Estimated Potential of Yield: $7000.00</p>
+                        <p>Requested Amount: $5000.00</p>
+                        <p class="estimate">Estimated Potential of Yield: $20000.00</p>
                         
                     </div>
                     
@@ -82,7 +82,7 @@
   	</section>
   	
   	
-<!--   	<div class="hr-divider"></div> -->
+   	<div class="hr-divider"></div> 
   	
   	<section class="request-details">
          <div class="container">
@@ -112,8 +112,8 @@
                 </div>
                 
                 <p class="detail-heading">Financials</p>
-                <p>Requested Amount: $2000.00</p>
-                <p class="estimate">Estimated Potential of Yield: $7000.00</p>
+                <p>Requested Amount: $5000.00</p>
+                <p class="estimate">Estimated Potential of Yield: $20000.00</p>
                 
                 <div class="col-md-3 col-md-offset-5 col-sm-3 col-sm-offset-4 col-xs-6 col-xs-offset-3 fund-me">
                     <button class='btn btn-wide btn-success mrm' type='submit' name="submit">Fund Loan<span class='btn-tip'></span></button>
@@ -124,6 +124,37 @@
          </div>
   	    
   	</section>
+     
+    <script>
+        $(document).ready(viewRequestDetails());
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('id=') + 1);
+        alert(id);
+      function viewRequestDetails(id){
+            var requestDetails = "";
+            var farmerName = objResult.people[id].FirstName + " " + objResult.people[id].FirstName;
+            requestDetails += "<section class='slide-minus request-detail-bg'><div class='container'>";
+            requestDetails += "<div class='row'><div class='col-md-8 col-md-offset-2'><h6>Loan Request Details</h6><div class='col-md-6 col-sm-6 col-xs-12'>";
+            requestDetails += "<img src='images/farmer.jpg' alt='' class='farmer-img'><div class='requester'>";
+            requestDetails += "<p class='r-name'>" + Farmer + "</p><p>@" + objResult.people[id].Farmer + "</p><p>" + objResult.people[id].Location + "</p></div></div>"
+
+            requestDetails += "<div class='col-md-6 col-sm-6 col-xs-12 request-summary'>";
+            requestDetails +=  "<p>Farmer Rating: <span class='navbar-new'>"+objResult.people[id].Rating +"</span></p>";
+            requestDetails += "<p>Requested Amount: "+objResult.people[id].RequestedAmount+"</p>";
+            requestDetails += "<p class="estimate">Estimated Potential of Yield: "+objResult.people[id].ExpectedYield+"</p>";
+            requestDetails += "</div></div></div></div></section><section class='request-details'><div class='container'><div class='col-md-8 col-md-offset-2 tab-menu'>";
+            requestDetails += "<p class='focused'>Details</p></div><div class='col-md-8 col-md-offset-2 request-info'><p class='detail-heading'>Land &amp; Crop</p>"; 
+            requestDetails += "<div class='col-md-6'><p>Crop: " + objResult.people[id].Crop+ "</p><p>Land Area: " + objResult.people[id].LandSize+ " acres</p>";
+            requestDetails += "</div><div class='col-md-6'><p>Seeds: 56g</p><p>Location: " + objResult.people[id].Location + "</p></div><br><br><br><p class='detail-heading'>Map</p>";
+            requestDetails += "<br><div class='col-md-12'><img src='images/map.png' alt='' class='img-responsive map-img'>";
+            requestDetails += "</div><p class='detail-heading'>Financials</p><p>Requested Amount: "+objResult.people[id].RequestedAmount+"</p>";
+            requestDetails +=  "<p class='estimate'>Estimated Potential of Yield: "+objResult.people[id].ExpectedYield+"</p>";
+            requestDetails +=  "<div class='col-md-3 col-md-offset-5 col-sm-3 col-sm-offset-4 col-xs-6 col-xs-offset-3 fund-me'>";
+            requestDetails += "<button class='btn btn-wide btn-success mrm' type='submit' name='submit'>Fund Loan<span class='btn-tip'></span></button>";
+            requestDetails +=  "</div></div></div></section>";
+            
+        }
+      </script>
   	
   	<footer>
 	  	<div class="container">
@@ -168,5 +199,7 @@
     <script src="js/flatui-radio.js"></script>
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
+    
+      
   </body>
 </html>
